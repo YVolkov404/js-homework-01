@@ -12,3 +12,38 @@ const images = [
     alt: 'Group of Horses Running',
   },
 ];
+
+//     !! FIRST SOLUTION
+
+// images.map(({url, alt}) => {
+//   const list = document.querySelector('.gallery');
+//   const listItem = document.createElement('li');
+//   listItem.classList.add('gallery-item');
+//
+//   const img = document.createElement('img');
+//   img.classList.add('gallery-img');
+//   img.src = url;
+//   img.alt = alt;
+//
+//   listItem.insertAdjacentHTML('beforeend', img);
+//   list.insertAdjacentHTML('beforeend', listItem);
+//   return list;
+// })
+
+//     !! SECOND SOLUTION
+
+const list = document.querySelector('.gallery');
+
+const imagesListMarkUp = ({url, alt}) => {
+  return `
+    <li class='gallery-item'>
+    <img class='gallery-img' 
+        src="${url}" 
+        alt="${alt}">
+    </li>
+  `;
+}
+
+const makeImagesList = images.map(imagesListMarkUp).join('');
+
+list.insertAdjacentHTML('beforeend', makeImagesList);
