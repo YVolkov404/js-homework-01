@@ -22,3 +22,43 @@
  * 5. Display the object with the entered data in the console and clear
  *    the values of the form fields using the reset method.
  */
+
+const form = document.querySelector(".login-form");
+
+form.addEventListener("submit", onFormeSubmit);
+
+//     !! FIRST SOLUTION
+
+// function onFormeSubmit(event) {
+//   event.preventDefault();
+
+//   const formData = new FormData(event.currentTarget);
+
+//   formData.forEach((value, name) => {
+//     if (value === "") {
+//       alert("All fields must be filled in");
+//     } else {
+//       console.log({ [name]: value });
+//       form.reset();
+//     }
+//   });
+// }
+
+//     !! SECOND SOLUTION
+
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const formElements = event.currentTarget.elements;
+  const email = formElements.email.value;
+  const password = formElements.password.value;
+  if (email === "" || password === "") {
+    alert("All fields must be filled in");
+  } else {
+    const formData = {
+      email: email,
+      password: password,
+    };
+    console.log(formData);
+    form.reset();
+  }
+});
