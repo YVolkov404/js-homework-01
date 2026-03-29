@@ -25,9 +25,9 @@
 
 const form = document.querySelector(".login-form");
 
-form.addEventListener("submit", onFormeSubmit);
-
 //     !! FIRST SOLUTION
+
+// form.addEventListener("submit", onFormeSubmit);
 
 // function onFormeSubmit(event) {
 //   event.preventDefault();
