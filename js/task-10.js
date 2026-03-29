@@ -21,6 +21,33 @@
  * Create a destroyBoxes() function that clears the contents of div#boxes, thereby removing all created elements.
  */
 
+const inputEl = document.querySelector("input");
+const createBtn = document.querySelector("[data-create]");
+const destroyBtn = document.querySelector("[data-destroy]");
+const boxesEl = document.querySelector("#boxes");
+
+function createBoxes(amount) {
+  for (let i = 0; i < amount; i += 1) {
+    const boxEl = document.createElement("div");
+    boxEl.style.width = `${30 + i * 10}px`;
+    boxEl.style.height = `${30 + i * 10}px`;
+    boxEl.style.backgroundColor = getRandomHexColor();
+    boxesEl.appendChild(boxEl);
+  }
+}
+
+function onBtnClickCreateBoxes() {
+  const amount = inputEl.value;
+  createBoxes(amount);
+}
+createBtn.addEventListener("click", onBtnClickCreateBoxes);
+
+function onBtnClickDestroyBoxes() {
+  boxesEl.innerHTML = "";
+  inputEl.value = "";
+}
+destroyBtn.addEventListener("click", onBtnClickDestroyBoxes);
+
 function getRandomHexColor() {
   return `#${Math.floor(Math.random() * 16777215)
     .toString(16)
