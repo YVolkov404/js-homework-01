@@ -31,6 +31,7 @@ function createBoxes(amount) {
     const boxEl = document.createElement("div");
     boxEl.style.width = `${30 + i * 10}px`;
     boxEl.style.height = `${30 + i * 10}px`;
+    boxEl.style.margin = "5px";
     boxEl.style.backgroundColor = getRandomHexColor();
     boxesEl.appendChild(boxEl);
   }
